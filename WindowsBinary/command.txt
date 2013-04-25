@@ -1,0 +1,1 @@
+$ python setup.py bdist --plat-name=win32 --formats=wininst
