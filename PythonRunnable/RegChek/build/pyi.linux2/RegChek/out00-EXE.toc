@@ -1,0 +1,10 @@
+('/home/inblueswithu/Downloads/pyinstaller-2.0/RegChek/dist/RegChek',
+ True,
+ True,
+ None,
+ None,
+ [],
+ None,
+ True,
+ 0,
+ 1368617738)
