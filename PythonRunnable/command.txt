@@ -1,0 +1,3 @@
+>>> import py_compile
+>>> py_compile.compile('H:\github\AutoRegistrationCheck\PythonRunnable\Main.py')
+>>> 
