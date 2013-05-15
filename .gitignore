@@ -3,3 +3,7 @@ File Extentions
 *.wpr
 *.wpu
 *.*~
+
+Folders
+-------
+.ropeproject/
