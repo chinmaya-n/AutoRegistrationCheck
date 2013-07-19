@@ -29,9 +29,9 @@ def main():
     site = br.open('http://202.65.142.140/CFSTONLINE/Reports/VehicleRegistrationSearch.aspx')
 
     # Build the regular expression
-    data_notfound_regex = re.compile('<span id="ctl00_OnlineContent_lblMsg" class="errormsg">No Data Found</span></td>', re.MULTILINE)
-    data_found_regex = re.compile('<span id="ctl00_OnlineContent_lblMsg"></span></td>', re.MULTILINE)
-    data_found_regex2 = re.compile('<span id="ctl00_OnlineContent_lblMsg" class="errormsg"></span></td>', re.MULTILINE)
+    data_notfound_regex = re.compile('<span id="ctl00_OnlineContent_lblMsg" class="errormsg">No Data Found</span></TD>', re.MULTILINE)
+    data_found_regex = re.compile('<span id="ctl00_OnlineContent_lblMsg"></span></TD>', re.MULTILINE)
+    data_found_regex2 = re.compile('<span id="ctl00_OnlineContent_lblMsg" class="errormsg"></span></TD>', re.MULTILINE)
 
     ## forms
     #for f in br.forms():
@@ -42,6 +42,9 @@ def main():
 
     # File pointer for adding Registered No's
     registered_fp = open("registered_nos.txt", mode= 'w')
+    
+    # File pointer for the result page
+    #result_page_fp = open("result_page.txt", mode= 'w') # Just for Testing (JFT)
 
     for engine_no in engine_nos_fp:
 
@@ -54,6 +57,7 @@ def main():
         # Fill the data that changes for each submission
         if engine_no != None:
             br.form['ctl00$OnlineContent$txtInput'] = engine_no.strip()
+            
         else:
             break
 
@@ -61,16 +65,23 @@ def main():
         try:
             # Submit the form and get the data
             res = br.submit()
+            #result_page_fp.write(res.get_data()) # JFT
+            
 
             # Read the line that decides if vehicle is registered
             line = res.readlines()[121].strip()
-            print line
+            #print line #JFT
 
             # Match the Reg Ex
-            line_match_notfound = data_notfound_regex.match(line)
-            line_match_found = data_found_regex.match(line)
-            line_match_found2 = data_found_regex2.match(line)
+            # Used this before Jul 19th 2013. Changed to 'regex.search' after some changes happend in the webpage
+            #line_match_notfound = data_notfound_regex.match(line)
+            #line_match_found = data_found_regex.match(line)
+            #line_match_found2 = data_found_regex2.match(line)
 
+            line_match_notfound = data_notfound_regex.search(line)
+            line_match_found = data_found_regex.search(line)
+            line_match_found2 = data_found_regex2.search(line)
+            
             # Check for registration
             if line_match_notfound != None :
 
@@ -95,7 +106,7 @@ def main():
 
     registered_fp.close()
     engine_nos_fp.close()
-    print "Job Done!"
+    print "Job Done! Please open 'registered_nos.txt' for all registered vehicles"
     return 0
 
 
