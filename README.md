@@ -10,7 +10,7 @@ Issues:
 ------
 -- Yet to find --
 
-Isseues Solved:
+Issues Solved:
 --------------
 19/07/2013
 1. Due to a line change in the website we needed to update the code near regex matching.
