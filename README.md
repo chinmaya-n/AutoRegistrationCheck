@@ -8,4 +8,6 @@ Using:
 
 Issues:
 ------
--- Yet to find --
+No perfect executable or finished user specific build is not yet generated.
+Have to learn how to do that a build with mechanize library & with python libs
+inbuild.
