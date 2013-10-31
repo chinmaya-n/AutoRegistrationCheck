@@ -1,5 +1,6 @@
 import mechanize, cookielib, re
 
+
 def main():
     # Browser
     br = mechanize.Browser()
@@ -26,12 +27,13 @@ def main():
     # -- Browser setup done
 
     # Now open website and do the things needed
-    site = br.open('http://202.65.142.140/CFSTONLINE/Reports/VehicleRegistrationSearch.aspx')
+    #site = br.open('http://202.65.142.140/CFSTONLINE/Reports/VehicleRegistrationSearch.aspx') // Was working till Oct 2013- Got site changes
+    site = br.open('https://aptransport.in/CFSTONLINE/Reports/VehicleRegistrationSearch.aspx')
 
     # Build the regular expression
-    data_notfound_regex = re.compile('<span id="ctl00_OnlineContent_lblMsg" class="errormsg">No Data Found</span></TD>', re.MULTILINE)
-    data_found_regex = re.compile('<span id="ctl00_OnlineContent_lblMsg"></span></TD>', re.MULTILINE)
-    data_found_regex2 = re.compile('<span id="ctl00_OnlineContent_lblMsg" class="errormsg"></span></TD>', re.MULTILINE)
+    data_notfound_regex = re.compile('<span id="ctl00_OnlineContent_lblMsg" class="errormsg">No Data Found</span></td>', re.MULTILINE)
+    data_found_regex = re.compile('<span id="ctl00_OnlineContent_lblMsg"></span></td>', re.MULTILINE)
+    data_found_regex2 = re.compile('<span id="ctl00_OnlineContent_lblMsg" class="errormsg"></span></td>', re.MULTILINE)
 
     ## forms
     #for f in br.forms():
@@ -42,7 +44,7 @@ def main():
 
     # File pointer for adding Registered No's
     registered_fp = open("registered_nos.txt", mode= 'w')
-    
+
     # File pointer for the result page
     #result_page_fp = open("result_page.txt", mode= 'w') # Just for Testing (JFT)
 
@@ -57,7 +59,7 @@ def main():
         # Fill the data that changes for each submission
         if engine_no != None:
             br.form['ctl00$OnlineContent$txtInput'] = engine_no.strip()
-            
+
         else:
             break
 
@@ -66,11 +68,11 @@ def main():
             # Submit the form and get the data
             res = br.submit()
             #result_page_fp.write(res.get_data()) # JFT
-            
+
 
             # Read the line that decides if vehicle is registered
-            line = res.readlines()[121].strip()
-            #print line #JFT
+            line = res.readlines()[136].strip()
+            #print line
 
             # Match the Reg Ex
             # Used this before Jul 19th 2013. Changed to 'regex.search' after some changes happend in the webpage
@@ -81,7 +83,7 @@ def main():
             line_match_notfound = data_notfound_regex.search(line)
             line_match_found = data_found_regex.search(line)
             line_match_found2 = data_found_regex2.search(line)
-            
+
             # Check for registration
             if line_match_notfound != None :
 
