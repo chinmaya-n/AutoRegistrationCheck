@@ -44,7 +44,7 @@ def main():
     registered_fp = open("registered_nos.txt", mode= 'w')
 
     # File pointer for saving the webpage visited
-    webpage_fp = open("webpage.txt", mode= 'w')
+    #webpage_fp = open("webpage.txt", mode= 'w')
     
     for engine_no in engine_nos_fp:
         
