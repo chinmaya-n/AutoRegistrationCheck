@@ -29,9 +29,9 @@ def main():
     site = br.open('http://202.65.142.140/CFSTONLINE/Reports/VehicleRegistrationSearch.aspx')
     
     # Build the regular expression
-    data_notfound_regex = re.compile('<span id="ctl00_OnlineContent_lblMsg" class="errormsg">No Data Found</span></td>', re.MULTILINE)
-    data_found_regex = re.compile('<span id="ctl00_OnlineContent_lblMsg"></span></td>', re.MULTILINE)
-    data_found_regex2 = re.compile('<span id="ctl00_OnlineContent_lblMsg" class="errormsg"></span></td>', re.MULTILINE)
+    data_notfound_regex = re.compile('<span id="ctl00_OnlineContent_lblMsg" class="errormsg">No Data Found</span>') #, re.MULTILINE)
+    data_found_regex = re.compile('<span id="ctl00_OnlineContent_lblMsg"></span>') #, re.MULTILINE)
+    data_found_regex2 = re.compile('<span id="ctl00_OnlineContent_lblMsg" class="errormsg"></span>') #, re.MULTILINE)
     
     ## forms
     #for f in br.forms():
@@ -42,6 +42,9 @@ def main():
     
     # File pointer for adding Registered No's
     registered_fp = open("registered_nos.txt", mode= 'w')
+
+    # File pointer for saving the webpage visited
+    webpage_fp = open("webpage.txt", mode= 'w')
     
     for engine_no in engine_nos_fp:
         
@@ -61,15 +64,16 @@ def main():
         try:
             # Submit the form and get the data
             res = br.submit()
+            #webpage_fp.write(res.read())
             
             # Read the line that decides if vehicle is registered
             line = res.readlines()[121].strip()
-            print line
+            #print line
             
             # Match the Reg Ex
-            line_match_notfound = data_notfound_regex.match(line)
-            line_match_found = data_found_regex.match(line)
-            line_match_found2 = data_found_regex2.match(line)
+            line_match_notfound = data_notfound_regex.search(line)
+            line_match_found = data_found_regex.search(line)
+            line_match_found2 = data_found_regex2.search(line)
             
             # Check for registration
             if line_match_notfound != None :
