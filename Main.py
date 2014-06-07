@@ -28,12 +28,12 @@ def main():
 
     # Now open website and do the things needed
     #site = br.open('http://202.65.142.140/CFSTONLINE/Reports/VehicleRegistrationSearch.aspx') // Was working till Oct 2013- Got site changes
-    site = br.open('https://aptransport.in/CFSTONLINE/Reports/VehicleRegistrationSearch.aspx')
+    site = br.open('https://aptransport.in/APCFSTONLINE/Reports/VehicleRegistrationSearch.aspx')
 
     # Build the regular expression
-    data_notfound_regex = re.compile('<span id="ctl00_OnlineContent_lblMsg" class="errormsg">No Data Found</span></td>', re.MULTILINE)
-    data_found_regex = re.compile('<span id="ctl00_OnlineContent_lblMsg"></span></td>', re.MULTILINE)
-    data_found_regex2 = re.compile('<span id="ctl00_OnlineContent_lblMsg" class="errormsg"></span></td>', re.MULTILINE)
+    data_notfound_regex = re.compile('<span id="ctl00_OnlineContent_lblMsg" class="errormsg">No Data Found</span>', re.MULTILINE)
+    data_found_regex = re.compile('<span id="ctl00_OnlineContent_lblMsg"></span>', re.MULTILINE)
+    data_found_regex2 = re.compile('<span id="ctl00_OnlineContent_lblMsg" class="errormsg"></span>', re.MULTILINE)
 
     ## forms
     #for f in br.forms():
@@ -69,9 +69,8 @@ def main():
             res = br.submit()
             #result_page_fp.write(res.get_data()) # JFT
 
-
             # Read the line that decides if vehicle is registered
-            line = res.readlines()[136].strip()
+            line = res.readlines()[128].strip()
             #print line
 
             # Match the Reg Ex
