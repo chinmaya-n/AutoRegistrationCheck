@@ -27,21 +27,14 @@ def main():
     # -- Browser setup done
 
     # Now open website and do the things needed
-    #site = br.open('http://202.65.142.140/CFSTONLINE/Reports/VehicleRegistrationSearch.aspx') // Was working till Oct 2013- Got site changes
-    site = br.open('https://aptransport.in/CFSTONLINE/Reports/VehicleRegistrationSearch.aspx')
+    #site = br.open('http://202.65.142.140/CFSTONLINE/Reports/VehicleRegistrationSearch.aspx') // Was working till Oct 2013- website changes
+    site = br.open('https://aptransport.in/APCFSTONLINE/Reports/VehicleRegistrationSearch.aspx')
 
     # Build the regular expression
-<<<<<<< HEAD
     data_notfound_regex = re.compile('<span id="ctl00_OnlineContent_lblMsg" class="errormsg">No Data Found</span>', re.MULTILINE)
     data_found_regex = re.compile('<span id="ctl00_OnlineContent_lblMsg"></span>', re.MULTILINE)
     data_found_regex2 = re.compile('<span id="ctl00_OnlineContent_lblMsg" class="errormsg"></span>', re.MULTILINE)
 
-=======
-    data_notfound_regex = re.compile('<span id="ctl00_OnlineContent_lblMsg" class="errormsg">No Data Found</span>') #, re.MULTILINE)
-    data_found_regex = re.compile('<span id="ctl00_OnlineContent_lblMsg"></span>') #, re.MULTILINE)
-    data_found_regex2 = re.compile('<span id="ctl00_OnlineContent_lblMsg" class="errormsg"></span>') #, re.MULTILINE)
-    
->>>>>>> 34ff15569479d843fc26d29dbf5b297db85794b1
     ## forms
     #for f in br.forms():
         #print f
@@ -52,15 +45,9 @@ def main():
     # File pointer for adding Registered No's
     registered_fp = open("registered_nos.txt", mode= 'w')
 
-<<<<<<< HEAD
     # File pointer for the result page
     #result_page_fp = open("result_page.txt", mode= 'w') # Just for Testing (JFT)
 
-=======
-    # File pointer for saving the webpage visited
-    #webpage_fp = open("webpage.txt", mode= 'w')
-    
->>>>>>> 34ff15569479d843fc26d29dbf5b297db85794b1
     for engine_no in engine_nos_fp:
 
         # select specific form - here first form (index 0)
@@ -80,13 +67,11 @@ def main():
         try:
             # Submit the form and get the data
             res = br.submit()
-<<<<<<< HEAD
             #result_page_fp.write(res.get_data()) # JFT
 
-
             # Read the line that decides if vehicle is registered
-            line = res.readlines()[121].strip() #136
-            #print line
+            line = res.readlines()[144].strip() # Old Line Number: 128
+            #print line # JFT
 
             # Match the Reg Ex
             # Used this before Jul 19th 2013. Changed to 'regex.search' after some changes happend in the webpage
@@ -98,19 +83,6 @@ def main():
             line_match_found = data_found_regex.search(line)
             line_match_found2 = data_found_regex2.search(line)
 
-=======
-            #webpage_fp.write(res.read())
-            
-            # Read the line that decides if vehicle is registered
-            line = res.readlines()[121].strip()
-            #print line
-            
-            # Match the Reg Ex
-            line_match_notfound = data_notfound_regex.search(line)
-            line_match_found = data_found_regex.search(line)
-            line_match_found2 = data_found_regex2.search(line)
-            
->>>>>>> 34ff15569479d843fc26d29dbf5b297db85794b1
             # Check for registration
             if line_match_notfound != None :
 
@@ -124,10 +96,12 @@ def main():
                 print engine_no.strip(), "Registered"
 
             else:
-                print "Error: Reg Ex match line not found !! Check the code!"
+                print "Error: Reg Ex match line not found !!"
+                print "Contact the Author at: inblueswithu@yahoo.co.in"
 
         except Exception as ex:
             print "Exception: ", ex
+            print "Contact the Author at: inblueswithu@yahoo.co.in"
             return 1
 
         ## printing the results
@@ -136,6 +110,7 @@ def main():
     registered_fp.close()
     engine_nos_fp.close()
     print "Job Done! Please open 'registered_nos.txt' for all registered vehicles"
+    raw_input("Press Any Key to Exit...")
     return 0
 
 
