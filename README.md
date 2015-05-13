@@ -19,8 +19,7 @@ Installation:
      the mechanize insallation.
 3. Now Download the latest release of ARC (Automatic Registration Checker)
 	- url: https://github.com/inblueswithu/AutoRegistrationCheck/releases
-	- download the latest realease by selecting the ARC_v0.X.X.zip in the Downloads Section (Or) Click the link below
-	   Latest Release: https://github.com/inblueswithu/AutoRegistrationCheck/releases/download/v0.1.4/ARC_v0.1.4.zip
+	- Click the link for Latest Release: https://github.com/inblueswithu/AutoRegistrationCheck/releases/download/v0.1.4/ARC_v0.1.4.zip (or) Download by selecting the ARC_v0.X.X.zip in the Releases Section
 4. Crate a directory with name "ARC" and Extract the contents into it.
 5. Double click on "Registration Checker.pyc" to run. If it runs properly, Update the file 'engine_nos.txt' with appropriate engine numbers. Registered No's are written to file 'registered_nos.txt'.
 6. If step 5 gave any errors which is not meaningful, we have to build an executable for your system. Follow the steps below:
