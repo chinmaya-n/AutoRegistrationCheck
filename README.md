@@ -9,17 +9,28 @@ Using:
 Installation:
 ------------
 1. Download and install Python.
-   a) url: https://www.python.org/downloads/
-   b) download the latest version and install it   
+   a. url: https://www.python.org/downloads/
+   b. download the latest version and install it   
 2. Download and install Mechanize Python Library:
-   a) url: http://wwwsearch.sourceforge.net/mechanize/download.html
-   b) Download a stable release, version at the time of writing: mechanize-0.2.5.tar.gz
-   c) Extract the tar.gz file and copy the "mechanize" directory from the mechanize-X.X.X directory.
-   d) paste the copied directory to "C:\Program Files (x86)\Python2.X\Lib\site-packages". This finishes
+   a. url: http://wwwsearch.sourceforge.net/mechanize/download.html
+   b. Download a stable release, version at the time of writing: mechanize-0.2.5.tar.gz
+   c. Extract the tar.gz file and copy the "mechanize" directory from the mechanize-X.X.X directory.
+   d. paste the copied directory to "C:\Program Files (x86)\Python2.X\Lib\site-packages". This finishes
       the mechanize insallation.
 3. Now Download the latest release of ARC (Automatic Registration Checker)
-4. Extract it and place the ARC directory where ever need.
-5. 
+	a. url: https://github.com/inblueswithu/AutoRegistrationCheck/releases
+	b. download the latest realease by selecting the ARC_v0.X.X.zip in the Downloads Section (Or) Click the link below
+	   Latest Release: https://github.com/inblueswithu/AutoRegistrationCheck/releases/download/v0.1.4/ARC_v0.1.4.zip
+4. Crate a directory with name "ARC" and Extract the contents into it.
+5. Double click on "Registration Checker.pyc" to run. If it runs properly, Update the file 'engine_nos.txt' with appropriate engine numbers. Registered No's are written to file 'registered_nos.txt'.
+6. If step 5 gave any errors which is not meaningful, we have to build an executable for your system. Follow the steps below:
+	a. Open Python IDLE Console. (Search in Start menu)
+	b. Type "import py_compile" (with out quotes) in the console & hit enter
+	c. Type "py_compile.compile('H:\ARC\Main.py')" (with out quotes) in the console & hit enter. Modify the path
+		'H:\ARC\Main.py' accordingly for the file we downloaded in step 4.
+	d. This should produce a file 'Main.pyc' in the same directory.
+	e. Rename it to remember it, usually "Registration Checker.pyc".
+	f. Run it to test if its working, if not contact Developer at: inblueswithu@yahoo.co.in
 
 Note: Here X - means any number (due to versioning)
 
