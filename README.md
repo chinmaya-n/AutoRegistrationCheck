@@ -11,15 +11,17 @@ Installation:
 1. Download and install Python.
    - url: https://www.python.org/downloads/
    - download the latest version and install it   
-2. Download and install Mechanize Python Library:
+2A. Download and install Mechanize Python Library:
    - url: http://wwwsearch.sourceforge.net/mechanize/download.html
    - Download a stable release, version at the time of writing: mechanize-0.2.5.tar.gz
    - Extract the tar.gz file and copy the "mechanize" directory from the mechanize-X.X.X directory.
    - paste the copied directory to "C:\Program Files (x86)\Python2.X\Lib\site-packages". This finishes
      the mechanize insallation.
+2B. We need to install "Beautiful Soup" package as well.
+   - Installation instructions will be updated soon (If you know, you are good to go)
 3. Now Download the latest release of ARC (Automatic Registration Checker)
 	- url: https://github.com/inblueswithu/AutoRegistrationCheck/releases
-	- Click the link for Latest Release: https://github.com/inblueswithu/AutoRegistrationCheck/releases/download/v0.1.4/ARC_v0.1.4.zip (or) Download by selecting the ARC_v0.X.X.zip in the Releases Section
+	- Click the link for Latest Release: https://github.com/inblueswithu/AutoRegistrationCheck/releases/download/v0.2/ARC_v0.2.zip (or) Download by selecting the ARC_v0.X.X.zip in the Releases Section
 4. Crate a directory with name "ARC" and Extract the contents into it.
 5. Double click on "Registration Checker.pyc" to run. If it runs properly skip step 6, Update the file 'engine_nos.txt' with appropriate engine numbers. Registered No's are written to file 'registered_nos.txt'.
 6. If step 5 gave any errors which is not meaningful, we will have to build an executable for your system. Follow the steps below:
