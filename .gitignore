@@ -18,6 +18,10 @@ PyCharm IDE
 -----------
 .idea/
 
+VS Code
+----------
+.vscode/
+
 pipenv
 ------
 Pipfile.lock
